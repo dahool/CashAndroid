@@ -199,7 +199,7 @@ function initRemotePage() {
 }
 
 function loadPersons() {
-    $.getJSON(SERVICE + 'person/list/',
+    $.getJSON(SERVICE + 'person/list',
         function(data) {
             var rows = data.rows;
             var $list = $("#loans-main");
