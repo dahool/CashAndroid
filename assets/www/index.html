@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cash Mobile</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="jquery.mobile-1.1.0.min.css" />
+<link rel="stylesheet" type="text/css" href="mobile.extra.css" />
+<link rel="stylesheet" type="text/css" href="jquery.mobile.simpledialog.min.css" />
+<link rel="stylesheet" type="text/css" href="swipe.css" />
+<link rel="stylesheet" type="text/css" href="default.css" />
+<script type="text/javascript" charset="utf-8" src="phonegap-1.2.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="swipe.list.js"></script>
+<script type="text/javascript" charset="utf-8" src="application.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery.mobile-1.1.0.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery.mobile.datebox.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery.mobile.datebox.i8n.es.js"></script>
+<script type="text/javascript" charset="utf-8" src="jquery.mobile.simpledialog.min.js"></script>
+</head>
+<body>
+
+<div data-role="page" id="main">
+
+	<div data-role="header">
+		<h1>Cash</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" id="main_nav">	
+        <div class="ui-grid-b">
+            <a href="#expenses" class="menu-element expense" data-role="button" data-inline="true">
+                Gastos
+            </a>
+            <a href="#loans" class="menu-element loan" data-role="button" data-inline="true">
+                Préstamos
+            </a>         
+        </div>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<div data-role="page" id="expenses">
+	<div data-role="header" data-theme="f">
+        <a href="#" data-rel="back" data-icon="home" data-iconpos="notext"></a>
+        <h1>Gastos</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" id="main_nav">
+        <div class="ui-grid-b">
+            <a href="{% url mobile:expenses_add %}" class="menu-element additem" data-role="button" data-inline="true">
+                Nuevo
+            </a>
+            <a href="{% url mobile:expenses_list %}" class="menu-element listitem" data-role="button" data-inline="true">
+                Listado
+            </a>            
+        </div>
+        
+	</div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role="page" id="loans">
+	<div data-role="header" data-theme="f">
+        <a href="#" data-rel="back" data-icon="home" data-iconpos="notext"></a>
+        <h1>Préstamos</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<ul data-role="listview" data-inset="true" id="loans-main"></ul>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+            </div>
+            <div class="ui-block-b">
+                <a href="#add_person" data-role="button" data-icon="plus">Nueva Persona</a> 
+            </div>
+        </div>
+	</div><!-- /content -->
+</div><!-- /page -->
+
+<div data-role="page" id="add_person">
+	<div data-role="header" data-theme="f">
+        <a href="{% url mobile:loans %}" data-icon="back" data-rel="back">Volver</a>
+        <h1>Nueva Persona</h1>
+        <a data-icon="check" data-theme="c" form-submit="#form-add-person" return="back">Guardar</a>
+	</div><!-- /header -->
+
+	<div data-role="content">
+        <form id="form-add-person" action="{% url person_save %}" after-submit-clean="name">
+            <ul data-role="listview" data-inset="true">
+                <li>
+                <div data-role="fieldcontain">
+                    <label for="name">Nombre:</label>
+                    <input field-focus="true" type="text" id="name" name="name" maxlength="255" value=""/>
+                </div>
+                </li>
+            </ul>
+        </form>
+	</div><!-- /content -->
+</div><!-- /page -->
+
+</body>
+</html>
